@@ -1,11 +1,10 @@
 <script setup lang="ts">
 
+import GridCars from '~/components/cars-grid/CarsGrid.vue';
 </script>
 
 <template>
-  <div class="bg-slate-50">
-    index page
-  </div>
+  <grid-cars></grid-cars>
 </template>
 
 <style scoped>
