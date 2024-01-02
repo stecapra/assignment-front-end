@@ -9,6 +9,9 @@ export default defineNuxtConfig({
       theme: {
         extend: {
           colors: {
+            primary: {
+              '0': '#FFF'
+            },
             secondary: {
               '500': '#1A202C',
               '300': '#90A3BF',
