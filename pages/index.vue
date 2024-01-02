@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div>
+  <div class="bg-slate-50">
     index page
   </div>
 </template>
