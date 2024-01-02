@@ -1,6 +1,10 @@
 <script setup>
 
+import { useLabels } from '~/composables/labels';
+
+const labels = useLabels();
 const props = defineProps(['car'])
+
 </script>
 
 <template>
@@ -32,7 +36,7 @@ const props = defineProps(['car'])
         </div>
         <div class="flex flex-auto items-center justify-end">
           <img class="pr-1.5" src="../../../assets/svg/profile-2user.svg">
-          <span class="text-secondary-300 font-medium text-sm leading-21 tracking-tighter">{{ props.car.people }} People</span>
+          <span class="text-secondary-300 font-medium text-sm leading-21 tracking-tighter">{{ props.car.people }} {{ labels.standard.People }}</span>
         </div>
       </div>
     </div>
@@ -41,7 +45,7 @@ const props = defineProps(['car'])
     <div class="flex items-center justify-between w-full">
       <span class="text-secondary-500 font-bold text-xl leading-normal">
         ${{ props.car.pricePerDay }}/
-        <span class="text-secondary-300 font-bold text-sm leading-normal">day</span>
+        <span class="text-secondary-300 font-bold text-sm leading-normal">{{ labels.standard.day }}</span>
       </span>
       <BaseButton />
     </div>

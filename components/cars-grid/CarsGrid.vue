@@ -1,12 +1,7 @@
 <script setup lang="ts">
 
 import CarCard from '~/components/cars-grid/car-card/CarCard.vue';
-let cars = {data: []};
-try {
-  let { data: cars } = await useFetch('https://dm-assignment-commonshare.koyeb.app/api/cars');
-} catch (e) {
-  console.log('error')
-}
+const { data: cars } = await useFetch('https://dm-assignment-commonshare.koyeb.app/api/cars');
 </script>
 
 <template>
