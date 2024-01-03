@@ -4,6 +4,36 @@ import AppFooterSection from '~/components/footer/components/AppFooterSection.vu
 import { useLabels } from '~/composables/labels';
 
 const labels = useLabels();
+
+const sections = [
+  {
+    title: labels.footer.About,
+    links: [
+      labels.footer['How it works'],
+      labels.footer['Featured'],
+      labels.footer['Partnership'],
+      labels.footer['Bussiness Relation'],
+    ]
+  },
+  {
+    title: labels.footer.Community,
+    links: [
+      labels.footer['Events'],
+      labels.footer['Blog'],
+      labels.footer['Podcast'],
+      labels.footer['Invite a friend'],
+    ]
+  },
+  {
+    title: labels.footer.Socials,
+    links: [
+      labels.footer['Discord'],
+      labels.footer['Instagram'],
+      labels.footer['Twitter'],
+      labels.footer['Facebook'],
+    ]
+  }
+]
 </script>
 
 <template>
@@ -14,9 +44,7 @@ const labels = useLabels();
           <span class="text-gray-800 opacity-60 font-medium text-base leading-24 tracking-tighter">Our vision is to provide convenience and help increase your sales business.</span>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-          <AppFooterSection />
-          <AppFooterSection />
-          <AppFooterSection />
+          <AppFooterSection v-for="section in sections" :title="section.title" :links="section.links"/>
         </div>
     </div>
     <div class="divider"></div>

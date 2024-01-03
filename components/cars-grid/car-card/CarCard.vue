@@ -14,7 +14,6 @@ const props = defineProps(['car'])
 function onClickFavorite() {
   const id = props.car.id;
   carsStore.toggleCarFavorite(id);
-  console.log('toggled')
 }
 
 </script>
@@ -34,7 +33,8 @@ function onClickFavorite() {
 
     <!-- Content -->
     <div class="flex flex-col mt-[50px] mb-6">
-      <div class="mb-[50px] w-56 mx-auto">
+      <div class="mb-[50px] w-56 mx-auto relative">
+        <div class="car-shadow absolute w-full h-[60%]"></div>
         <img :src="props.car.img">
       </div>
       <div class="flex">
@@ -65,5 +65,8 @@ function onClickFavorite() {
 </template>
 
 <style scoped>
-
+.car-shadow {
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 100%);
+}
 </style>
