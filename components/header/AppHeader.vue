@@ -2,6 +2,21 @@
 
 import HeartIcon from '~/components/base/icons/HeartIcon.vue';
 import SearchIcon from '~/components/base/icons/SearchIcon.vue';
+import { useCarsStore } from '~/stores/car';
+import SearchDropdown from '~/components/header/components/SearchDropdown.vue';
+
+const value = defineModel('');
+const searchCars = ref();
+const carsStore = useCarsStore();
+
+function search() {
+  const key = value.value as string;
+  searchCars.value = [];
+  if (key) {
+    searchCars.value = carsStore.search(key);
+  }
+}
+
 </script>
 
 <template>
@@ -19,7 +34,16 @@ import SearchIcon from '~/components/base/icons/SearchIcon.vue';
             <div class="absolute inset-y-0 start-0 flex items-center ps-5 pointer-events-none">
               <search-icon />
             </div>
-            <input type="search" id="default-search" class="block w-full py-2.5 ps-16 text-sm text-gray-900 border border-gray-300 rounded-3xl focus:ring-blue-500 focus:border-blue-500" placeholder="Search something here" required>
+            <input
+                type="search"
+                id="default-search"
+                class="block w-full py-2.5 ps-16 text-sm text-gray-900 border border-gray-300 rounded-3xl focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Search something here"
+                v-model="value"
+                @input="search" />
+            <div v-if="searchCars" class="absolute w-full">
+              <search-dropdown :cars="searchCars" />
+            </div>
           </div>
       </div>
 

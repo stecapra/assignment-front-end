@@ -25,9 +25,8 @@ export const useCarsStore = defineStore('cars', {
             const recommendationCar = this.recommendation_cars.find(c => c.id === id);
             if (recommendationCar) {
                 recommendationCar.favorite = !recommendationCar.favorite;
-                console.log('toggling')
             }
-        }
+        },
     },
     getters: {
         getPopularCars: (state): ICar[] => {
@@ -40,6 +39,11 @@ export const useCarsStore = defineStore('cars', {
             // TODO: merge the two options
             return state.popular_cars.filter(c => c.favorite)
         },
+        search: (state) => {
+            return (key: string) => {
+                return state.recommendation_cars.filter(c => c.name.toLowerCase().indexOf(key.toLowerCase()) !== -1) ?? [];
+            }
+        }
     },
 })
 

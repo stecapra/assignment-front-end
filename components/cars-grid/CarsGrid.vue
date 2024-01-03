@@ -15,12 +15,12 @@ const cars = data.value as ICarResponse;
 cars.data.forEach(c => {
   carsStore.addRecommendationCar(c);
 })
-const recommendation_cars = carsStore.getRecommendationCars;
+const recommendationCars = carsStore.getRecommendationCars;
 </script>
 
 <template>
   <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 bg-[#f6f7f9]">
-    <car-card v-for="c in recommendation_cars" :car="c" :view="'small'"  />
+    <car-card v-for="c in recommendationCars" :car="c" :view="'small'"  />
   </div>
 
 </template>

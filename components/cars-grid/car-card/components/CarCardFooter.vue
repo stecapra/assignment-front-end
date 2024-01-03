@@ -14,7 +14,7 @@ const car = props.car as ICar;
           ${{ car.pricePerDay }}/
           <span class="text-secondary-300 font-bold text-sm leading-normal">{{ labels.standard.day }}</span>
         </span>
-    <BaseButton />
+    <BaseButton :title="labels.standard['Rent Now']" />
   </div>
 </template>
 
