@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import HeartIcon from '~/components/base/icons/HeartIcon.vue';
+import SearchIcon from '~/components/base/icons/SearchIcon.vue';
 </script>
 
 <template>
@@ -16,7 +17,7 @@ import HeartIcon from '~/components/base/icons/HeartIcon.vue';
         <!-- Content for column 2 -->
           <div class="relative w-full">
             <div class="absolute inset-y-0 start-0 flex items-center ps-5 pointer-events-none">
-              <img class="w-6 h-6" src = "../../assets/svg/search.svg" alt="Favorites"/>
+              <search-icon />
             </div>
             <input type="search" id="default-search" class="block w-full py-2.5 ps-16 text-sm text-gray-900 border border-gray-300 rounded-3xl focus:ring-blue-500 focus:border-blue-500" placeholder="Search something here" required>
           </div>
