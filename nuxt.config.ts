@@ -11,7 +11,8 @@ export default defineNuxtConfig({
         extend: {
           colors: {
             primary: {
-              '0': '#FFF'
+              '0': '#FFF',
+              '500': '#3563E9'
             },
             secondary: {
               '500': '#1A202C',

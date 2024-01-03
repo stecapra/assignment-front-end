@@ -1,5 +1,9 @@
 import type { ICar } from '~/models/Car.interfaces';
 
+// We store cars in different place even if there will be duplicate.
+// This to maintain the order.
+// Another approach could be two different stores or use a single store with a single array and add the
+// info about position or popularity as a attribute of the car
 interface ICarsStoreData {
     popular_cars: ICar[],
     recommendation_cars: ICar[]
@@ -12,10 +16,20 @@ export const useCarsStore = defineStore('cars', {
     }),
     actions: {
         addPopularCar(car: ICar) {
-            this.popular_cars.push(car);
+            // Avoid duplication. Depends on the api could be a complete reset every add, or a merge.
+            // For demostration we simply avoid duplicated
+            const find = this.popular_cars.find(c => c.id === car.id);
+            if (!find) {
+                this.popular_cars.push(car);
+            }
         },
         addRecommendationCar(car: ICar) {
-            this.recommendation_cars.push(car);
+            // Avoid duplication. Depends on the api could be a complete reset every add, or a merge.
+            // For demostration we simply avoid duplicated
+            const find = this.recommendation_cars.find(c => c.id === car.id);
+            if (!find) {
+                this.recommendation_cars.push(car);
+            }
         },
         toggleCarFavorite(id: string) {
             const popularCar = this.popular_cars.find(c => c.id === id);
