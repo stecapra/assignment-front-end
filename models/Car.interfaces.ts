@@ -13,6 +13,7 @@ export enum KindOfTransition {
 export interface ICar {
     id: string,
     name: string,
+    description?: string,
     type: CarType,
     gasolineLiter: number,
     kindOfTransition: KindOfTransition,

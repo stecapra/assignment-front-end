@@ -20,7 +20,7 @@ const recommendation_cars = carsStore.getRecommendationCars;
 
 <template>
   <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 bg-[#f6f7f9]">
-    <car-card v-for="c in recommendation_cars" :car="c" />
+    <car-card v-for="c in recommendation_cars" :car="c" :view="'small'"  />
   </div>
 
 </template>

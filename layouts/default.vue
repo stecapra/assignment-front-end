@@ -7,7 +7,9 @@ import AppFooter from '~/components/footer/AppFooter.vue';
 <template>
   <div>
     <app-header />
-    <slot />
+    <div class="p-16 pt-8 bg-[#F6F7F9]">
+      <slot />
+    </div>
     <app-footer />
   </div>
 </template>

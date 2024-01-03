@@ -1,7 +1,11 @@
 {
   "standard": {
     "day": "day",
-    "People": "People"
+    "People": "People",
+    "Type Car": "Type Car",
+    "Capacity": "Capacity",
+    "Gasoline": "Gasoline",
+    "Steering": "Steering"
   },
   "ads": {
     "The Best Platform for Car Rental": "The Best Platform for Car Rental",
