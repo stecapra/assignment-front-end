@@ -15,10 +15,7 @@ const cars = data.value as ICarResponse;
 cars.data.forEach(c => {
   carsStore.addRecommendationCar(c);
 })
-
 const recommendation_cars = carsStore.getRecommendationCars;
-
-console.log('recom', recommendation_cars)
 </script>
 
 <template>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 
+import HeartIcon from '~/components/base/icons/HeartIcon.vue';
 </script>
 
 <template>
@@ -24,7 +25,9 @@
       <!-- Column 3 -->
       <div class="flex flex-none p-2.5 rounded-full border order-2 sm:order-3">
         <!-- Content for column 3 -->
-        <img class="w-6 h-6 " src = "../../assets/svg/heart.svg" alt="Favorites"/>
+        <div class="w-6 h-6 ">
+          <heart-icon />
+        </div>
       </div>
     </div>
   </div>

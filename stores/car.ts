@@ -17,14 +17,15 @@ export const useCarsStore = defineStore('cars', {
         addRecommendationCar(car: ICar) {
             this.recommendation_cars.push(car);
         },
-        setCarFavorite(id: string, favorite: boolean) {
+        toggleCarFavorite(id: string) {
             const popularCar = this.popular_cars.find(c => c.id === id);
             if (popularCar) {
-                popularCar.favorite = favorite
+                popularCar.favorite = !popularCar.favorite
             }
             const recommendationCar = this.recommendation_cars.find(c => c.id === id);
             if (recommendationCar) {
-                recommendationCar.favorite = favorite;
+                recommendationCar.favorite = !recommendationCar.favorite;
+                console.log('toggling')
             }
         }
     },
