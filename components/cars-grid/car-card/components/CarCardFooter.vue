@@ -6,6 +6,10 @@ import type { ICar } from '~/models/Car.interfaces';
 const labels = useLabels();
 const props = defineProps(['car'])
 const car = props.car as ICar;
+
+function rentCar(): void {
+  window.alert(`renting ${car.name}`)
+}
 </script>
 
 <template>
@@ -14,7 +18,7 @@ const car = props.car as ICar;
           ${{ car.pricePerDay }}/
           <span class="text-secondary-300 font-bold text-sm leading-normal">{{ labels.standard.day }}</span>
         </span>
-    <BaseButton :title="labels.standard['Rent Now']" />
+    <BaseButton @click.stop="rentCar" :title="labels.standard['Rent Now']" />
   </div>
 </template>
 

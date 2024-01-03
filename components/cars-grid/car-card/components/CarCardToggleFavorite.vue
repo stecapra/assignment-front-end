@@ -15,7 +15,7 @@ function onClickFavorite() {
 </script>
 
 <template>
-  <button class="rounded-full" @click="onClickFavorite">
+  <button class="rounded-full" @click.stop="onClickFavorite">
     <heart-icon :color="car.favorite ? 'red' : null"/>
   </button>
 </template>

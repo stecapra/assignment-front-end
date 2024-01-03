@@ -5,6 +5,7 @@ import SearchIcon from '~/components/base/icons/SearchIcon.vue';
 import { useCarsStore } from '~/stores/car';
 import SearchDropdown from '~/components/header/components/SearchDropdown.vue';
 
+const router = useRouter();
 const value = defineModel('');
 const searchCars = ref();
 const carsStore = useCarsStore();
@@ -17,14 +18,18 @@ function search() {
   }
 }
 
+function goToIndex(): void {
+  router.push(`/`);
+}
+
 </script>
 
 <template>
   <div class="header-container px-10 bg-white">
     <div class="flex flex-col sm:flex-row items-center">
       <!-- Column 1 -->
-      <div class="flex justify-center logo flex-none w-[9.25rem] h-11 order-1 sm:order-1">
-        <span>DM</span>
+      <div class="flex justify-center logo flex-none w-[9.25rem] h-11 order-1 sm:order-1 cursor-pointer">
+        <span @click="goToIndex">DM</span>
       </div>
 
       <!-- Column 2 -->

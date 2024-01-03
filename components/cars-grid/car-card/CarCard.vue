@@ -11,24 +11,26 @@ const car = props.car as ICar;
 </script>
 
 <template>
-  <car-card-small v-if="!props.view || props.view === 'small'" :car="car">
-    <template v-slot:button-favorite>
-      <car-card-toggle-favorite :car="car" />
-    </template>
+  <div class="cursor-pointer">
+    <car-card-small v-if="!props.view || props.view === 'small'" :car="car">
+      <template v-slot:button-favorite>
+        <car-card-toggle-favorite :car="car" />
+      </template>
 
-    <template v-slot:footer>
-      <car-card-footer :car="car" />
-    </template>
-  </car-card-small>
+      <template v-slot:footer>
+        <car-card-footer :car="car" />
+      </template>
+    </car-card-small>
 
-  <car-card-big v-else :car="car">
-    <template v-slot:button-favorite>
-      <car-card-toggle-favorite :car="car" />
-    </template>
-    <template v-slot:footer>
-      <car-card-footer :car="car" />
-    </template>
-  </car-card-big>
+    <car-card-big v-else :car="car">
+      <template v-slot:button-favorite>
+        <car-card-toggle-favorite :car="car" />
+      </template>
+      <template v-slot:footer>
+        <car-card-footer :car="car" />
+      </template>
+    </car-card-big>
+  </div>
 </template>
 
 <style scoped>
