@@ -10,6 +10,10 @@ export enum KindOfTransition {
     ELECTRIC = 'Electric'
 }
 
+export interface ICarImage {
+    url: string;
+}
+
 export interface ICar {
     id: string,
     name: string,
@@ -20,5 +24,6 @@ export interface ICar {
     people: number,
     pricePerDay: number,
     img: string,
+    images?: ICarImage[],
     favorite?: boolean // Only frontend
 }
