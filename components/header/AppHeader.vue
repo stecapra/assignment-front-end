@@ -34,6 +34,15 @@ function onClickSearchCar(car: ICar): void {
   router.push(`/cars/${car.id}`);
 }
 
+function showFavorites(): void {
+  const names = carsStore.getFavoriteCars.map(c => c?.name);
+  if(names.length) {
+    window.alert(`Your favorites => ${names}`)
+  } else {
+    window.alert(`You don't have favorites cars`);
+  }
+}
+
 function resetSearch() {
   value.value = '';
   showSearchDropdown.value = false;
@@ -73,7 +82,7 @@ function resetSearch() {
       <div class="flex flex-none p-2.5 rounded-full border order-2 sm:order-3">
         <!-- Content for column 3 -->
         <div class="w-6 h-6 ">
-          <heart-icon />
+          <heart-icon @click="showFavorites" />
         </div>
       </div>
     </div>

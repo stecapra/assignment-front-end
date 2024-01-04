@@ -1,4 +1,5 @@
 import type { ICar } from '~/models/Car.interfaces';
+import { BaseIconsCarIcon } from '#components';
 
 // We store cars in different place even if there will be duplicate.
 // This to maintain the order.
@@ -10,11 +11,13 @@ export interface IRecommendationCarsPaginationInfo {
     lastPage: number,
 }
 interface ICarsStoreData {
+    current_car: ICar | null,
     popular_cars: ICar[],
     recommendation_cars: {
         cars: ICar[],
         pagination: IRecommendationCarsPaginationInfo
     };
+    favorites: string[];
 }
 
 interface ICarResponse {
@@ -27,6 +30,7 @@ interface ICarResponse {
 
 export const useCarsStore = defineStore('cars', {
     state: (): ICarsStoreData => ({
+        current_car: null,
         popular_cars: [],
         recommendation_cars: {
             pagination: {
@@ -34,9 +38,14 @@ export const useCarsStore = defineStore('cars', {
                 lastPage: 0,
             },
             cars: [],
-        }
+        },
+        favorites: []
     }),
     actions: {
+        saveCurrentCar(car: ICar) {
+            this.current_car = car;
+            this.current_car.favorite = !!this.favorites.indexOf(this.current_car.id);
+        },
         async fetchPopularCars() {
             const { data } = await useFetch('/api/popular-cars');
             const cars = data.value as ICar[];
@@ -51,13 +60,11 @@ export const useCarsStore = defineStore('cars', {
             this.recommendation_cars.cars.push(...cars.data);
         },
         toggleCarFavorite(id: string) {
-            const popularCar = this.popular_cars.find(c => c.id === id);
-            if (popularCar) {
-                popularCar.favorite = !popularCar.favorite
-            }
-            const recommendationCar = this.recommendation_cars.cars.find(c => c.id === id);
-            if (recommendationCar) {
-                recommendationCar.favorite = !recommendationCar.favorite;
+            const index = this.favorites.indexOf(id);
+            if (index === -1) {
+                this.favorites.push(id);
+            } else {
+               this.favorites.splice(index, 1);
             }
         },
     },
@@ -79,9 +86,15 @@ export const useCarsStore = defineStore('cars', {
         getRecommendationCarsMetaInfo: (state): IRecommendationCarsPaginationInfo => {
           return state.recommendation_cars.pagination;
         },
+        isCarFavorite: (state) => {
+            return (id: string) => state.favorites.indexOf(id) !== -1
+        },
         getFavoriteCars: (state) => {
-            // TODO: merge the two options
-            return state.popular_cars.filter(c => c.favorite)
+            return state.favorites.map((id) => {
+                return state.current_car?.id === id ? state.current_car :
+                    state.popular_cars.find(c => c.id === id) ??
+                    state.recommendation_cars.cars.find(c => c.id === id)
+            }).filter(c => !!c);
         },
         search: (state) => {
             return (key: string) => {

@@ -1,10 +1,8 @@
 <script setup lang="ts">
 
-import type { ICar } from '~/models/Car.interfaces';
-import { useLabels } from '~/composables/labels';
 import CarCard from '~/components/widgets/cars-grid/car-card/CarCard.vue';
-import CarsGrid from '~/components/widgets/cars-grid/CarsGrid.vue';
 import RecommendedCars from '~/components/widgets/cars-grid/RecommendedCars.vue';
+import { useCarsStore } from '~/stores/cars';
 
 definePageMeta({
   middleware: [
@@ -12,11 +10,8 @@ definePageMeta({
   ],
 });
 
-const route = useRoute()
-const id = route.params?.id;
-
-const { data } = await useFetch(`/api/cars/${id}`);
-const car: ICar = data.value as ICar;
+const carsStore = useCarsStore();
+const car = carsStore.current_car;
 </script>
 
 <template>
