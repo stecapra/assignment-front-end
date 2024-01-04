@@ -12,6 +12,9 @@
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.10.3",
+    "@types/jest": "^29.5.11",
+    "@vitejs/plugin-vue": "^5.0.2",
+    "@vue/test-utils": "^2.4.3",
     "nuxt": "^3.9.0",
     "vitest": "^1.1.1",
     "vue": "^3.4.3",

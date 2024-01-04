@@ -25,5 +25,4 @@ export interface ICar {
     pricePerDay: number,
     img: string,
     images?: ICarImage[],
-    favorite?: boolean // Only frontend
 }

@@ -1,5 +1,5 @@
 import type { ICar } from '~/models/Car.interfaces';
-import { BaseIconsCarIcon } from '#components';
+import { defineStore } from 'pinia';
 
 // We store cars in different place even if there will be duplicate.
 // This to maintain the order.
@@ -44,7 +44,6 @@ export const useCarsStore = defineStore('cars', {
     actions: {
         saveCurrentCar(car: ICar) {
             this.current_car = car;
-            this.current_car.favorite = !!this.favorites.indexOf(this.current_car.id);
         },
         async fetchPopularCars() {
             const { data } = await useFetch('/api/popular-cars');
@@ -97,8 +96,13 @@ export const useCarsStore = defineStore('cars', {
             }).filter(c => !!c);
         },
         search: (state) => {
+            const fields = ['name'];    // Add field where search thought
             return (key: string) => {
-                return state.recommendation_cars.cars.filter(c => c.name.toLowerCase().indexOf(key.toLowerCase()) !== -1) ?? [];
+                return state.recommendation_cars.cars.filter(c => {
+                    // @ts-ignore
+                    const terms = fields.map(f => c[f]).join();
+                    return terms.toLowerCase().indexOf(key.toLowerCase()) !== -1
+                }) ?? [];
             }
         }
     },
