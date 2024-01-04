@@ -12,6 +12,13 @@ definePageMeta({
 
 const carsStore = useCarsStore();
 const car = carsStore.current_car;
+
+useHead({
+  title: `Assignment Front end - details - ${car?.name}`,
+  meta: [
+    { name: 'description', content: `Specific meta tag for ${car?.name}` }
+  ],
+})
 </script>
 
 <template>

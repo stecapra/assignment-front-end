@@ -6,6 +6,13 @@ import PopularCars from '~/components/widgets/cars-grid/PopularCars.vue';
 import RecommendedCars from '~/components/widgets/cars-grid/RecommendedCars.vue';
 
 const labels = useLabels();
+
+useHead({
+  title: 'Assignment Front end',
+  meta: [
+    { name: 'description', content: 'Explore affordable and reliable car rentals at XYZ Rentals. Discover a wide range of vehicles, from compact cars to spacious SUVs, perfect for your next adventure. Book with confidence, enjoy flexible rental options, and experience the freedom of the open road with XYZ Rentals.' }
+  ],
+})
 </script>
 
 <template>
