@@ -20,7 +20,7 @@ const images = [car.img, ...car.images?.map(i => i.url) ?? []];
         </base-info-card>
       </base-pattern-card>
       <div class="grid grid-cols-3 gap-2 mt-[26px]">
-        <div v-for="(img, index) in images" :class="`overflow-hidden rounded-lg ${index === 1 ? 'border border-primary-500 p2' : ''}`">
+        <div v-for="(img, index) in images" :class="`overflow-hidden rounded-lg ${index === 0 ? 'border border-2 border-primary-500 p-2' : ''}`">
           <base-pattern-card v-if="index === 0" :background-pattern="1">
             <img class="w-full h-full" :src="img">
           </base-pattern-card>

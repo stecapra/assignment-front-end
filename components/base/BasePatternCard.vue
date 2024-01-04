@@ -3,11 +3,11 @@
 const props = defineProps(['backgroundPattern'])
 
 const patternClass = ref(props.backgroundPattern === 0 ? 'circle' : 'arrow')
-const backgroundColor = ref(props.backgroundPattern === 0 ? 'information-500' : 'primary-500')
+const backgroundColor = ref(props.backgroundPattern === 0 ? 'bg-information-500' : 'bg-primary-500')
 </script>
 
 <template>
-  <div :class="`h-full w-full relative bg-${backgroundColor} rounded-[10px]`">
+  <div :class="`h-full w-full relative ${backgroundColor} rounded-[10px]`">
     <div :class="`h-full w-full absolute top-0 left-0 z-0 bg-pattern-${patternClass}`"></div>
     <slot></slot>
   </div>
