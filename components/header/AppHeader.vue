@@ -4,10 +4,14 @@ import HeartIcon from '~/components/base/icons/HeartIcon.vue';
 import SearchIcon from '~/components/base/icons/SearchIcon.vue';
 import { useCarsStore } from '~/stores/cars';
 import SearchDropdown from '~/components/header/components/SearchDropdown.vue';
+import type { ICar } from '~/models/Car.interfaces';
+import { ErrorCodes } from 'vscode-jsonrpc';
+import jsonrpcReservedErrorRangeEnd = ErrorCodes.jsonrpcReservedErrorRangeEnd;
 
 const router = useRouter();
 const value = defineModel('');
 const searchCars = ref();
+const showSearchDropdown = ref(false);
 const carsStore = useCarsStore();
 
 function search() {
@@ -16,10 +20,23 @@ function search() {
   if (key) {
     searchCars.value = carsStore.search(key);
   }
+
+  showSearchDropdown.value = searchCars.value?.length
 }
 
 function goToIndex(): void {
+  resetSearch();
   router.push(`/`);
+}
+
+function onClickSearchCar(car: ICar): void {
+  resetSearch();
+  router.push(`/cars/${car.id}`);
+}
+
+function resetSearch() {
+  value.value = '';
+  showSearchDropdown.value = false;
 }
 
 </script>
@@ -46,8 +63,8 @@ function goToIndex(): void {
                 placeholder="Search something here"
                 v-model="value"
                 @input="search" />
-            <div v-if="searchCars" class="absolute w-full">
-              <search-dropdown :cars="searchCars" />
+            <div v-if="showSearchDropdown" class="absolute w-full">
+              <search-dropdown :cars="searchCars" @carSelected="onClickSearchCar" />
             </div>
           </div>
       </div>

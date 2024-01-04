@@ -2,18 +2,15 @@
 
 import type { ICar } from '~/models/Car.interfaces';
 
-const router = useRouter();
 const props = defineProps(['cars'])
+const emit = defineEmits(['carSelected']);
 const car = props.cars as ICar[];
 
-function onClickSearchCar(car: ICar): void {
-  router.push(`/cars/${car.id}`);
-}
 </script>
 
 <template>
   <div class="flex flex-col overflow-y-auto max-h-[300px] w-[75%] bg-white border rounded-lg mt-3">
-    <div v-for="car in props.cars" @click="onClickSearchCar(car)" class="flex h-16 w-full p-2 border justify-between cursor-pointer">
+    <div v-for="car in props.cars" @click="emit('carSelected', car)" class="flex h-16 w-full p-2 border justify-between cursor-pointer">
       <div class="flex flex-1">
         <img :src="car.img">
       </div>
