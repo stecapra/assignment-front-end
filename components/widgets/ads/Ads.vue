@@ -12,7 +12,7 @@ const props = defineProps(['title', 'subtitle', 'actionButton', 'img'])
     </div>
     <div class="flex mt-5 flex-col sm:flex-row">
       <base-button :title="props.actionButton"/>
-      <div class="mt-8 w-[406px] h-[116px]">
+      <div class="mt-8 w-full sm:w-[406px] sm:h-[116px]">
         <slot></slot>
       </div>
     </div>

@@ -13,7 +13,7 @@ const car = props.car as ICar;
 </script>
 
 <template>
-  <div class="flex flex-col justify-between bg-white p-6 sm:w-[304px] shadow-lg ">
+  <div class="flex flex-col justify-between bg-white p-6 shadow-lg ">
     <!-- Header -->
     <div class="flex justify-between w-full">
       <div class="flex flex-col">
@@ -25,7 +25,7 @@ const car = props.car as ICar;
 
     <!-- Content -->
     <div class="flex flex-col mt-[50px] mb-6">
-      <div class="mb-[50px] w-56 mx-auto relative">
+      <div class="mb-[50px] w-56 h-[100px] mx-auto relative">
         <div class="car-shadow absolute w-full h-[60%]"></div>
         <img :src="car.img">
       </div>
