@@ -26,8 +26,8 @@ const car = props.car as ICar;
     <!-- Content -->
     <div class="flex flex-col mt-[50px] mb-6">
       <div class="mb-[50px] w-56 h-[100px] mx-auto relative">
+        <img class="h-full mx-auto" :src="car.img">
         <div class="car-shadow absolute w-full h-[60%]"></div>
-        <img :src="car.img">
       </div>
       <div class="flex">
         <div class="flex flex-auto items-center justify-start">
