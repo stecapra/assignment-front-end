@@ -2,7 +2,6 @@
 
 import Ads from '~/components/widgets/ads/Ads.vue';
 import { useLabels } from '~/composables/labels';
-import CarsGrid from '~/components/widgets/cars-grid/CarsGrid.vue';
 import PopularCars from '~/components/widgets/cars-grid/PopularCars.vue';
 import RecommendedCars from '~/components/widgets/cars-grid/RecommendedCars.vue';
 

@@ -25,7 +25,7 @@ function goToCarDetails(car: ICar): void {
   <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 bg-[#f6f7f9]">
     <car-card v-for="c in cars" :car="c" :view="'small'" @click="goToCarDetails(c)"  />
   </div>
-  <div class="flex p-14 justify-center">
+  <div v-if="props.showNextPage" class="flex p-14 justify-center">
     <base-button :title="labels.cars['Show More Car']" @clicked="emit('showMore')" />
   </div>
 

@@ -15,7 +15,7 @@ definePageMeta({
 const route = useRoute()
 const id = route.params?.id;
 
-const { data } = await useFetch(`https://dm-assignment-commonshare.koyeb.app/api/cars/${id}`);
+const { data } = await useFetch(`/api/cars/${id}`);
 const car: ICar = data.value as ICar;
 </script>
 

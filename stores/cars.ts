@@ -34,13 +34,13 @@ export const useCarsStore = defineStore('cars', {
     }),
     actions: {
         async fetchPopularCars() {
-            const { data } = await useFetch('https://dm-assignment-commonshare.koyeb.app/api/cars/popular');
+            const { data } = await useFetch('/api/popular-cars');
             const cars = data.value as ICar[];
             this.popular_cars.push(...cars);
             return this.popular_cars;
         },
         async fetchRecommendationCars(page: number) {
-            const { data } = await useFetch(`https://dm-assignment-commonshare.koyeb.app/api/cars?page=${page}`);
+            const { data } = await useFetch(`/api/recommended-cars?page=${page}`);
             const cars = data.value as ICarResponse;
             this.recommendation_cars.total = cars.meta.total;
             this.recommendation_cars.lastPage = cars.meta.last_page;
