@@ -1,9 +1,10 @@
 <script setup lang="ts">
 
-import Ads from '~/components/widgets/ads/Ads.vue';
 import { useLabels } from '~/composables/labels';
 import PopularCars from '~/components/widgets/cars-grid/PopularCars.vue';
 import RecommendedCars from '~/components/widgets/cars-grid/RecommendedCars.vue';
+import BasePatternCard from '~/components/base/BasePatternCard.vue';
+import BaseInfoCard from '~/components/base/BaseInfoCard.vue';
 
 const labels = useLabels();
 
@@ -17,18 +18,20 @@ useHead({
 
 <template>
   <div class="flex justify-between flex-col sm:flex-row space-x-8">
-    <ads :title="labels.ads['The Best Platform for Car Rental']"
-         :subtitle="labels.ads['Ease of doing a car rental safely and reliably. Of course at a low price.']"
-         :action-button="labels.ads['Rental Car']"
-         img="../../assets/images/ads_1.png">
-      <img src="@/assets/images/ads_1.png" alt="ads.image">
-    </ads>
-    <ads class="hidden sm:block" :title="labels.ads['Easy way to rent a car at a low price']"
-         :subtitle="labels.ads['Ease of doing a car rental safely and reliably. Of course at a low price.']"
-         :action-button="labels.ads['Rental Car']"
-         img="ads_1">
-      <img src="@/assets/images/ads_2.png" alt="ads.image">
-    </ads>
+    <base-pattern-card :background-pattern="0">
+      <base-info-card :title="labels.ads['The Best Platform for Car Rental']"
+                 :subtitle="labels.ads['Ease of doing a car rental safely and reliably. Of course at a low price.']"
+                 :action-button="labels.ads['Rental Car']">
+        <img src="@/assets/images/ads_1.png" alt="ads.image">
+      </base-info-card>
+    </base-pattern-card>
+    <base-pattern-card :background-pattern="1">
+      <base-info-card class="hidden sm:flex" :title="labels.ads['Easy way to rent a car at a low price']"
+                 :subtitle="labels.ads['Ease of doing a car rental safely and reliably. Of course at a low price.']"
+                 :action-button="labels.ads['Rental Car']">
+        <img src="@/assets/images/ads_2.png" alt="ads.image">
+      </base-info-card>
+    </base-pattern-card>
   </div>
 
   <popular-cars />

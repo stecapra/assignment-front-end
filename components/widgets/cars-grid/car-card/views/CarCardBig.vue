@@ -2,6 +2,7 @@
 
 import type { ICar } from '~/models/Car.interfaces';
 import { useLabels } from '~/composables/labels';
+import BaseInfoCard from '~/components/base/BaseInfoCard.vue';
 
 const labels = useLabels();
 const props = defineProps(['car'])
@@ -12,17 +13,19 @@ const images = [car.img, ...car.images?.map(i => i.url) ?? []];
 <template>
   <div class="flex flex-col sm:flex-row sm:space-x-6">
     <div class="flex flex-col flex-1 basis-1/3">
-      <div class="flex flex-col p-6 bg-[#000] h-[380px] rounded-lg justify-between">
-        <div class="flex flex-col">
-          <span class="text-primary-0 font-semibold text-2xl leading-150 tracking-tighter mb-4">Sports car with the best<br> design and acceleration</span>
-          <span class="text-primary-0 font-medium text-base leading-150 tracking-tight">Safety and comfort while driving a<br> futuristic and elegant sports car</span>
-        </div>
-        <div class="flex mx-auto w-[75%]">
-          <img :src="car.img">
-        </div>
-      </div>
+      <base-pattern-card :background-pattern="1">
+        <base-info-card :title="'Sports car with the best design and acceleration'"
+                   :subtitle="'Safety and comfort while driving a futuristic and elegant sports car'">
+          <img class="h-full mx-auto" :src="car.img" alt="car image">
+        </base-info-card>
+      </base-pattern-card>
       <div class="grid grid-cols-3 gap-2 mt-[26px]">
-        <img v-for="img in images" class="rounded-lg w-full h-full" :src="img">
+        <div v-for="(img, index) in images" :class="`overflow-hidden rounded-lg ${index === 1 ? 'border border-primary-500 p2' : ''}`">
+          <base-pattern-card v-if="index === 0" :background-pattern="1">
+            <img class="w-full h-full" :src="img">
+          </base-pattern-card>
+          <img v-else class="w-full h-full" :src="img">
+        </div>
       </div>
     </div>
     <div class="bg-white rounded-lg flex flex-1 basis-2/3 flex-col justify-between p-6">
@@ -62,5 +65,8 @@ const images = [car.img, ...car.images?.map(i => i.url) ?? []];
 </template>
 
 <style scoped>
+.img-selected {
+  border: 1px solid blue;
 
+}
 </style>

@@ -20,6 +20,9 @@ export default defineNuxtConfig({
               '300': '#90A3BF',
               // Add other shades as needed, e.g., '400', '500', etc.
             },
+            information: {
+              '500': '#54A6FF'
+            }
           },
         },
       },
