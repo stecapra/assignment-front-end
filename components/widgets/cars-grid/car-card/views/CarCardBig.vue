@@ -6,12 +6,12 @@ import { useLabels } from '~/composables/labels';
 const labels = useLabels();
 const props = defineProps(['car'])
 const car = props.car as ICar;
-const images = [car.img, ...car.images?.map(i => i.url)];
+const images = [car.img, ...car.images?.map(i => i.url) ?? []];
 </script>
 
 <template>
   <div class="flex flex-col sm:flex-row sm:space-x-6">
-    <div class="flex flex-col flex-1">
+    <div class="flex flex-col flex-1 basis-1/3">
       <div class="flex flex-col p-6 bg-[#000] h-[380px] rounded-lg justify-between">
         <div class="flex flex-col">
           <span class="text-primary-0 font-semibold text-2xl leading-150 tracking-tighter mb-4">Sports car with the best<br> design and acceleration</span>
@@ -25,7 +25,7 @@ const images = [car.img, ...car.images?.map(i => i.url)];
         <img v-for="img in images" class="rounded-lg w-full h-full" :src="img">
       </div>
     </div>
-    <div class="bg-white rounded-lg flex flex-1 flex-col justify-between p-6">
+    <div class="bg-white rounded-lg flex flex-1 basis-2/3 flex-col justify-between p-6">
       <div class="flex flex-col">
         <div class="flex">
           <span class="text-secondary-500 font-bold text-[32px] leading-150 tracking-tight mr-8">{{ car.name }}</span>
