@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  serverMiddleware: ['~/serverMiddleware/api.js'],
   modules: [
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt'

@@ -1,10 +1,11 @@
 <script setup lang="ts">
 
 const props = defineProps(['title', 'link'])
+const emit = defineEmits(['clicked'])
 </script>
 
 <template>
-  <div>
+  <div @click="emit('clicked')">
     <button v-if="!link" class="py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded">
       {{ title }}
     </button>

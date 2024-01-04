@@ -1,10 +1,10 @@
 <script setup lang="ts">
 
-import CarCardSmall from '~/components/cars-grid/car-card/views/CarCardSmall.vue';
-import CarCardToggleFavorite from '~/components/cars-grid/car-card/components/CarCardToggleFavorite.vue';
-import CarCardFooter from '~/components/cars-grid/car-card/components/CarCardFooter.vue';
+import CarCardSmall from '~/components/widgets/cars-grid/car-card/views/CarCardSmall.vue';
+import CarCardToggleFavorite from '~/components/widgets/cars-grid/car-card/components/CarCardToggleFavorite.vue';
+import CarCardFooter from '~/components/widgets/cars-grid/car-card/components/CarCardFooter.vue';
 import type { ICar } from '~/models/Car.interfaces';
-import CarCardBig from '~/components/cars-grid/car-card/views/CarCardBig.vue';
+import CarCardBig from '~/components/widgets/cars-grid/car-card/views/CarCardBig.vue';
 
 const props = defineProps(['car', 'view'])
 const car = props.car as ICar;

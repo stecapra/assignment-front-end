@@ -2,7 +2,7 @@
 
 import HeartIcon from '~/components/base/icons/HeartIcon.vue';
 import SearchIcon from '~/components/base/icons/SearchIcon.vue';
-import { useCarsStore } from '~/stores/car';
+import { useCarsStore } from '~/stores/cars';
 import SearchDropdown from '~/components/header/components/SearchDropdown.vue';
 
 const router = useRouter();

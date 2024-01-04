@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import { useCarsStore } from '~/stores/car';
+import { useCarsStore } from '~/stores/cars';
 import HeartIcon from '~/components/base/icons/HeartIcon.vue';
 import type { ICar } from '~/models/Car.interfaces';
 

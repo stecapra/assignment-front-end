@@ -1,7 +1,10 @@
 <script setup lang="ts">
 
-import Ads from '~/components/ads/Ads.vue';
+import Ads from '~/components/widgets/ads/Ads.vue';
 import { useLabels } from '~/composables/labels';
+import CarsGrid from '~/components/widgets/cars-grid/CarsGrid.vue';
+import PopularCars from '~/components/widgets/cars-grid/PopularCars.vue';
+import RecommendedCars from '~/components/widgets/cars-grid/RecommendedCars.vue';
 
 const labels = useLabels();
 </script>
@@ -21,7 +24,9 @@ const labels = useLabels();
       <img src="@/assets/images/ads_2.png" alt="ads.image">
     </ads>
   </div>
-  <cars-grid />
+
+  <popular-cars />
+  <recommended-cars />
 </template>
 
 <style scoped>
