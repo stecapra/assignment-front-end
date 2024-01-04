@@ -18,12 +18,13 @@ async function getCars() {
   }
 
   cars.value.push(...carsStore.getRecommendationCarsByPage(currentPage.value));
+
+  showNextPage.value = currentPage.value < carsStore.getRecommendationCarsMetaInfo.lastPage;
 }
 
 async function showMore() {
   currentPage.value = currentPage.value + 1;
   await getCars();
-  showNextPage.value = false;
 }
 </script>
 

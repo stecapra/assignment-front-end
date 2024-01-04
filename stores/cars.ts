@@ -4,13 +4,16 @@ import type { ICar } from '~/models/Car.interfaces';
 // This to maintain the order.
 // Another approach could be two different stores or use a single store with a single array and add the
 // info about position or popularity as a attribute of the car
+
+export interface IRecommendationCarsPaginationInfo {
+    total: number,
+    lastPage: number,
+}
 interface ICarsStoreData {
     popular_cars: ICar[],
     recommendation_cars: {
         cars: ICar[],
-        total: number,
-        lastPage: number,
-        currentPage: number,
+        pagination: IRecommendationCarsPaginationInfo
     };
 }
 
@@ -26,10 +29,11 @@ export const useCarsStore = defineStore('cars', {
     state: (): ICarsStoreData => ({
         popular_cars: [],
         recommendation_cars: {
-            total: 0,
-            lastPage: 0,
+            pagination: {
+                total: 0,
+                lastPage: 0,
+            },
             cars: [],
-            currentPage: 1,
         }
     }),
     actions: {
@@ -42,8 +46,8 @@ export const useCarsStore = defineStore('cars', {
         async fetchRecommendationCars(page: number) {
             const { data } = await useFetch(`/api/recommended-cars?page=${page}`);
             const cars = data.value as ICarResponse;
-            this.recommendation_cars.total = cars.meta.total;
-            this.recommendation_cars.lastPage = cars.meta.last_page;
+            this.recommendation_cars.pagination.total = cars.meta.total;
+            this.recommendation_cars.pagination.lastPage = cars.meta.last_page;
             this.recommendation_cars.cars.push(...cars.data);
         },
         toggleCarFavorite(id: string) {
@@ -71,6 +75,9 @@ export const useCarsStore = defineStore('cars', {
                 const end = start + carsPerPage;
                 return state.recommendation_cars.cars.slice(start, end);
             }
+        },
+        getRecommendationCarsMetaInfo: (state): IRecommendationCarsPaginationInfo => {
+          return state.recommendation_cars.pagination;
         },
         getFavoriteCars: (state) => {
             // TODO: merge the two options
