@@ -107,7 +107,3 @@ export const useCarsStore = defineStore('cars', {
         }
     },
 })
-
-if (import.meta.hot) {
-    import.meta.hot.accept(acceptHMRUpdate(useCarsStore, import.meta.hot))
-}
