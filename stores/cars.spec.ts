@@ -15,19 +15,27 @@ const MOCK_CAR: ICar = {
 }
 
 describe('Counter Store', () => {
-    beforeEach(() => {
+    let store: ReturnType<typeof useCarsStore>;
+
+    beforeAll(() => {
         setActivePinia(createPinia())
     })
 
+    beforeEach(() => {
+        store = useCarsStore();
+    })
+
+    afterEach(() => {
+        store.$reset();
+    })
+
     it('save the current car', () => {
-        const store = useCarsStore();
         store.saveCurrentCar(MOCK_CAR);
         expect(store.current_car?.name).toBe(MOCK_CAR.name)
     })
 
     it('add and remove the id when add to favorite cars', () => {
         const id = 'id-test';
-        const store = useCarsStore();
         store.toggleCarFavorite(id);
         expect(store.favorites.length).toBe(1)
         store.toggleCarFavorite(id);
@@ -35,7 +43,6 @@ describe('Counter Store', () => {
     })
 
     it('search by name', () => {
-        const store = useCarsStore();
         store.recommendation_cars.cars = [
             MOCK_CAR
         ]

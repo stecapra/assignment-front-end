@@ -1,7 +1,7 @@
 import type { ICar } from '~/models/Car.interfaces';
 import { defineStore } from 'pinia';
 
-// We store cars in different place even if there will be duplicate.
+// We store cars in different arrays even if there will be duplicate.
 // This to maintain the order.
 // Another approach could be two different stores or use a single store with a single array and add the
 // info about position or popularity as a attribute of the car
